@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Manager</title>
+    <link rel="stylesheet" href="second.css"> 
+</head>
+<body>
+
+<div class="header">
+    <h2>NAME's Contacts</h2>
+    <button class="logoutBtn">Logout</button>
+</div>
+
+<div class="optionsContainer">
+    <button class="addContact">Add Contact</button>
+
+    <div class="filter-container">
+        <button class="filter-button">Filter</button>
+        <div id="filter-content" class="filter-content">
+            <label><input type="checkbox" value="firstName"> First Name</label>
+            <label><input type="checkbox" value="lastName"> Last Name</label>
+            <label><input type="checkbox" value="email"> Email</label>
+        </div>
+    </div>
+
+    <input type="text" id="search" placeholder="Search">
+</div>
+
+<table>
+    <tr>
+        <th width="20%">First Name</th>
+        <th width="20%">Last Name</th>
+        <th>Email</th>
+        <th width="12%">Date Modified</th>
+        <th width="7%" colspan="2"></th>
+    </tr>
+    <tr>
+        <td>Jane</td>
+        <td>Doe</td>
+        <td>JaneDoe@gmail.com</td>
+        <td>2/5/2025</td>
+        <td><button class="editBtn">e</button></td>
+        <td><button class="deleteBtn">d</button></td>
+    </tr>
+</table>
+
+<script src="second.js"></script> <!-- Link to external JS -->
+</body>
+</html>
