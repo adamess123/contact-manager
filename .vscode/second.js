@@ -9,7 +9,6 @@ document.querySelector(".filter-button").addEventListener("click", function(even
     toggleDropdown();
 });
 
-
 // Close dropdown when clicking outside
 document.addEventListener("click", function(event) {
     let dropdown = document.querySelector(".filter-container");
@@ -70,4 +69,68 @@ document.getElementById("saveContact").addEventListener("click", function() {
 
     // Hide form after adding
     document.querySelector(".add-contact-form").style.display = "none";
+
+
+    // Function to enable editing a contact
+function editContact(button) {
+    let row = button.closest("tr");
+    let cells = row.querySelectorAll("td");
+
+    let firstName = cells[0].innerText;
+    let lastName = cells[1].innerText;
+    let email = cells[2].innerText;
+
+    // Convert cells into input fields
+    cells[0].innerHTML = `<input type="text" value="${firstName}">`;
+    cells[1].innerHTML = `<input type="text" value="${lastName}">`;
+    cells[2].innerHTML = `<input type="email" value="${email}">`;
+
+    // Change edit button to save button
+    button.innerHTML = `<i class="fa fa-save"></i>`;
+    button.onclick = function () {
+        saveContact(button);
+    };
+}
+
+// Function to save edited contact
+function saveContact(button) {
+    let row = button.closest("tr");
+    let cells = row.querySelectorAll("td");
+
+    let newFirstName = cells[0].querySelector("input").value;
+    let newLastName = cells[1].querySelector("input").value;
+    let newEmail = cells[2].querySelector("input").value;
+
+    if (newFirstName === "" || newLastName === "" || newEmail === "") {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    // Set new values
+    cells[0].innerText = newFirstName;
+    cells[1].innerText = newLastName;
+    cells[2].innerText = newEmail;
+
+    // Restore edit button
+    button.innerHTML = `<i class="fa fa-pencil"></i>`;
+    button.onclick = function () {
+        editContact(button);
+    };
+}
+
+// Function to delete a contact instantly
+function deleteContact(button) {
+    let row = button.closest("tr");
+    row.remove();
+}
+
+// Event listener for dynamically added buttons
+document.addEventListener("click", function (event) {
+    if (event.target.closest(".editBtn")) {
+        editContact(event.target.closest(".editBtn"));
+    }
+    if (event.target.closest(".deleteBtn")) {
+        deleteContact(event.target.closest(".deleteBtn"));
+    }
+});
 });
