@@ -15,7 +15,14 @@
 
 <div class="header">
     <h2>NAME's Contacts</h2>
-    <button class="logoutBtn">Logout</button>
+    <!-- Dropdown for Logout & Manage Account -->
+    <div class="dropdown">
+        <button class="dropbtn">Account <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content">
+            <a href="#" id="manageAccount">Manage Account</a>
+            <a href="first.html" id="logout">Logout</a>
+        </div>
+    </div>
 </div>
 
 <div class="optionsContainer">
@@ -30,16 +37,16 @@
     <div class="filter-container">
         <button class="filter-button">Filter</button>
         <div id="filter-content" class="filter-content">
-            <label><input type="checkbox" value="firstName"> First Name</label>
-            <label><input type="checkbox" value="lastName"> Last Name</label>
-            <label><input type="checkbox" value="email"> Email</label>
+            <label><input type="checkbox" value="firstName" id="fNameFilter"> First Name</label>
+            <label><input type="checkbox" value="lastName" id="lNameFilter"> Last Name</label>
+            <label><input type="checkbox" value="email" id="emailFilter"> Email</label>
         </div>
     </div>
 
     <input type="text" id="search" placeholder="Search">
 </div>
 
-<table>
+<table id="contactTable">
     <tr>
         <th width="20%">First Name</th>
         <th width="20%">Last Name</th>

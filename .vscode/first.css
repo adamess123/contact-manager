@@ -2,10 +2,6 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-}
-
-/* Login/Signup Page */
-.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,6 +9,7 @@ body {
     background-color: #f4f4f4;
 }
 
+/* Login/Signup Page */
 .container {
     background: white;
     padding: 20px;

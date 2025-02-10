@@ -17,11 +17,6 @@ document.addEventListener("click", function(event) {
     }
 });
 
-// Logout function
-document.querySelector(".logoutBtn").addEventListener("click", function() {
-    window.location.href = "first.html";
-});
-
 // Filter table based on search input
 document.getElementById("search").addEventListener("keyup", function() {
     let input = this.value.toLowerCase();
@@ -34,10 +29,11 @@ document.getElementById("search").addEventListener("keyup", function() {
 });
 
 //---------------------------------
-// Toggle the Add Contact form
+// Toggle the Add Contact form open and close
 document.querySelector(".addContact").addEventListener("click", function() {
-    document.querySelector(".add-contact-form").style.display = "flex";
-});
+    let form = document.querySelector(".add-contact-form");
+    form.style.display = form.style.display === "flex" ? "none" : "flex";
+}); 
 
 // Function to add contact to the table
 document.getElementById("saveContact").addEventListener("click", function() {
@@ -134,3 +130,57 @@ document.addEventListener("click", function (event) {
     }
 });
 });
+
+// Filtering table 
+function filterTable() {
+    let searchValue = document.getElementById("search").value.toLowerCase();
+    let firstNameEnabled = document.getElementById("fNameFilter").checked;
+    let lastNameEnabled = document.getElementById("lNameFilter").checked;
+    let emailEnabled = document.getElementById("emailFilter").checked;
+
+    let table = document.getElementById("contactTable");
+    let rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        let cells = rows[i].getElementsByTagName("td");
+        if (cells.length > 0) {
+            let firstName = cells[0].textContent.toLowerCase();
+            let lastName = cells[1].textContent.toLowerCase();
+            let email = cells[2].textContent.toLowerCase();
+
+            let match = (
+                (firstNameEnabled && firstName.includes(searchValue)) ||
+                (lastNameEnabled && lastName.includes(searchValue)) ||
+                (emailEnabled && email.includes(searchValue))
+            );
+
+            rows[i].style.display = match ? "" : "none";
+        }
+    }
+}
+
+// Attach event listeners to search bar and checkboxes
+document.getElementById("search").addEventListener("input", filterTable);
+document.getElementById("fNameFilter").addEventListener("change", filterTable);
+document.getElementById("lNameFilter").addEventListener("change", filterTable);
+document.getElementById("emailFilter").addEventListener("change", filterTable);
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelector('.dropbtn').addEventListener('click', function() {
+        document.querySelector('.dropdown-content').classList.toggle('show');
+    });
+});
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
