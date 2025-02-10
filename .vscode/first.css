@@ -46,3 +46,13 @@ button:hover {
     color: #007BFF;
     cursor: pointer;
 }
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px auto;
+    border: 3px solid #007BFF;
+}
