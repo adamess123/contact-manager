@@ -23,7 +23,7 @@ function login() {
         }
     }
     // Submit the form to the next page
-    form.action = "second.html"; // Redirect to next page
+    form.action = "search.html"; // Redirect to next page
 }
 
 function singup() {
@@ -37,5 +37,5 @@ function singup() {
         }
     }
     // Submit the form to the next page
-    form.action = "second.html"; // Redirect to next page
+    form.action = "search.html"; // Redirect to next page
 }
