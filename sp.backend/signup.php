@@ -1,43 +1,58 @@
 <?php
-// Establish database connection and helper functions
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
 include 'db.php';
 
-// Get user input from the request
 $inData = getRequestInfo();
 
-// Validate required fields
-if (!isset($inData["username"], $inData["firstname"], $inData["lastname"], $inData["password"])) {
+// Expecting JSON in the order: firstname, lastname, username, password
+if (!isset($inData["firstname"], $inData["lastname"], $inData["username"], $inData["password"])) {
     sendResultInfoAsJson(["error" => "All fields are required"]);
     exit();
 }
 
-// Extract user details from request data
-$firstname = $inData["firstname"];
-$lastname = $inData["lastname"];
-$username = $inData["username"];
-$password = password_hash($inData["password"], PASSWORD_DEFAULT); // Hash the password for security
+$firstname    = $inData["firstname"];
+$lastname     = $inData["lastname"];
+$username     = $inData["username"];
+$passwordHash = password_hash($inData["password"], PASSWORD_DEFAULT);
 
-// Check if the username already exists
+// Check if username already exists
 $stmt = $conn->prepare("SELECT ID FROM Users WHERE Username=?");
+if (!$stmt) {
+    sendResultInfoAsJson(["error" => "Database error: " . $conn->error]);
+    exit();
+}
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
+if ($result && $result->num_rows > 0) {
+    $stmt->close();  // Close the SELECT statement before exiting
     sendResultInfoAsJson(["error" => "Username already registered."]);
-} else {
-    // Insert new user into the database
-    $stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Username, Password) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $firstname, $lastname, $username, $password);
+    exit();
+}
+$stmt->close();  // Close the SELECT statement after the check
 
-    if ($stmt->execute()) {
-        sendResultInfoAsJson(["message" => "User registered successfully!"]);
-    } else {
-        sendResultInfoAsJson(["error" => "Failed to register user"]);
-    }
+// Insert the new user
+$stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Username, Password) VALUES (?, ?, ?, ?)");
+if (!$stmt) {
+    sendResultInfoAsJson(["error" => "Database error: " . $conn->error]);
+    exit();
+}
+$stmt->bind_param("ssss", $firstname, $lastname, $username, $passwordHash);
+
+if ($stmt->execute()) {
+    sendResultInfoAsJson(["message" => "User registered successfully!"]);
+} else {
+    sendResultInfoAsJson(["error" => "Failed to register user: " . $stmt->error]);
 }
 
-// Close the prepared statement and database connection
 $stmt->close();
 $conn->close();
 ?>

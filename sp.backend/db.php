@@ -1,5 +1,8 @@
-// This file sets up database connection in PHP
 <?php
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
 // Credentials
 $host = "localhost";
@@ -27,5 +30,15 @@ function sendResultInfoAsJson($obj)
 {
     header('Content-type: application/json');
     echo json_encode($obj);
+}
+
+// Returns user info in JSON format
+function returnWithInfo($firstName, $lastName, $id) {
+    $retVal = [
+        "id"        => $id,
+        "firstname" => $firstName,
+        "lastname"  => $lastName
+    ];
+    sendResultInfoAsJson($retVal);
 }
 ?>
