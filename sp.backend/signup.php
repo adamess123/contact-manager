@@ -1,59 +1,43 @@
 <?php
-// Database connection
+// Establish database connection and helper functions
 include 'db.php';
 
-// Get raw POST request data
-$rawData = file_get_contents("php://input");
-$data = json_decode($rawData, true);
+// Get user input from the request
+$inData = getRequestInfo();
 
-// Ensure all fields are present
-if (!isset($data["username"], $data["firstname"], $data["lastname"], $data["password"])) {
-    echo json_encode(["error" => "All fields are required (username, firstname, lastname, password)."]);
+// Validate required fields
+if (!isset($inData["username"], $inData["firstname"], $inData["lastname"], $inData["password"])) {
+    sendResultInfoAsJson(["error" => "All fields are required"]);
     exit();
 }
 
-$firstname = $data["firstname"];
-$lastname = $data["lastname"];
-$username = $data["username"];
-$password = password_hash($data["password"], PASSWORD_DEFAULT); // Hash password
+// Extract user details from request data
+$firstname = $inData["firstname"];
+$lastname = $inData["lastname"];
+$username = $inData["username"];
+$password = password_hash($inData["password"], PASSWORD_DEFAULT); // Hash the password for security
 
-// Debugging: Check database connection
-if (!$conn) {
-    echo json_encode(["error" => "Database connection failed"]);
-    exit();
-}
-
-// Check if Username already exists
-$checkQuery = $conn->prepare("SELECT ID FROM Users WHERE Username = ?");
-if (!$checkQuery) {
-    echo json_encode(["error" => "Query preparation failed (checkQuery): " . $conn->error]);
-    exit();
-}
-$checkQuery->bind_param("s", $username);
-$checkQuery->execute();
-$result = $checkQuery->get_result();
+// Check if the username already exists
+$stmt = $conn->prepare("SELECT ID FROM Users WHERE Username=?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    echo json_encode(["error" => "Username already registered."]);
-    exit();
-}
-
-// Insert new user
-$query = $conn->prepare("INSERT INTO Users (FirstName, LastName, Username, Password) VALUES (?, ?, ?, ?)");
-if (!$query) {
-    echo json_encode(["error" => "Query preparation failed (query): " . $conn->error]);
-    exit();
-}
-$query->bind_param("ssss", $firstname, $lastname, $username, $password);
-
-if ($query->execute()) {
-    echo json_encode(["message" => "User registered successfully!"]);
+    sendResultInfoAsJson(["error" => "Username already registered."]);
 } else {
-    echo json_encode(["error" => "Failed to register user: " . $conn->error]);
+    // Insert new user into the database
+    $stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Username, Password) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $firstname, $lastname, $username, $password);
+
+    if ($stmt->execute()) {
+        sendResultInfoAsJson(["message" => "User registered successfully!"]);
+    } else {
+        sendResultInfoAsJson(["error" => "Failed to register user"]);
+    }
 }
 
-// Close connections
-$checkQuery->close();
-$query->close();
+// Close the prepared statement and database connection
+$stmt->close();
 $conn->close();
 ?>
