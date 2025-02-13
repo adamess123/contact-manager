@@ -10,50 +10,53 @@
 
 </head>
 <body>
-
-<div class="header">
-    <h2>NAME's Contacts</h2>
-    <!-- Dropdown for Logout & Manage Account -->
-    <div class="dropdown">
-        <img src="images/catpfp.png" alt="Profile Picture" class="profile-pic dropbtn">
-        <div class="dropdown-content">
-            <a href="user.html" id="manageAccount">Manage Account</a>
-            <a href="login.html" id="logout">Logout</a>
+    <div class="content-container">
+        <div class="header">
+            <h2>NAME's Contacts</h2>
+            <!-- Dropdown for Logout & Manage Account -->
+            <div class="dropdown">
+                <img src="images/BusinessCat.png" alt="Profile Picture" class="profile-pic dropbtn">
+                <div class="dropdown-content">
+                    <a href="user.html" id="manageAccount">Manage Account</a>
+                    <a href="login.html" id="logout">Logout</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<div class="optionsContainer">
-    <button class="addContact">Add Contact</button>
-    <div class="add-contact-form" style="display: none;">
-        <input type="text" id="firstName" placeholder="First Name">
-        <input type="text" id="lastName" placeholder="Last Name">
-        <input type="email" id="email" placeholder="Email">
-        <button id="saveContact">Save</button>
-    </div>
+        <div class="optionsContainer">
+            <button class="addContact">Add Contact</button>
+            
+            <div class="filter-container">
+                <button class="filter-button">Filter</button>
+                <div id="filter-content" class="filter-content">
+                    <label><input type="checkbox" value="firstName" id="fNameFilter"> First Name</label>
+                    <label><input type="checkbox" value="lastName" id="lNameFilter"> Last Name</label>
+                    <label><input type="checkbox" value="email" id="emailFilter"> Email</label>
+                </div>
+            </div>
 
-    <div class="filter-container">
-        <button class="filter-button">Filter</button>
-        <div id="filter-content" class="filter-content">
-            <label><input type="checkbox" value="firstName" id="fNameFilter"> First Name</label>
-            <label><input type="checkbox" value="lastName" id="lNameFilter"> Last Name</label>
-            <label><input type="checkbox" value="email" id="emailFilter"> Email</label>
+            <input type="text" id="search" placeholder="Search">
         </div>
+
+        <div class="add-contact-form" id="add-contact-form" style="display: none;">
+            <input type="text" id="firstName" placeholder="First Name">
+            <input type="text" id="lastName" placeholder="Last Name">
+            <input type="email" id="email" placeholder="Email">
+            <button id="saveContact">Save</button>
+        </div>
+
+        <div class="tableContainer">
+            <table id="contactTable">
+                <tr>
+                    <th width="20%">First Name</th>
+                    <th width="20%">Last Name</th>
+                    <th>Email</th>
+                    <th width="12%">Date Modified</th>
+                    <th width="7%" colspan="2"></th>
+                </tr>
+            </table>
+        </div> 
     </div>
-
-    <input type="text" id="search" placeholder="Search">
-</div>
-
-<table id="contactTable">
-    <tr>
-        <th width="20%">First Name</th>
-        <th width="20%">Last Name</th>
-        <th>Email</th>
-        <th width="12%">Date Modified</th>
-        <th width="7%" colspan="2"></th>
-    </tr>
-</table>
-
-<script src="js/search.js"></script> <!-- Link to external JS -->
+    <script src="js/search.js"></script> <!-- Link to external JS -->
 </body>
 </html>

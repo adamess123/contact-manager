@@ -6,7 +6,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    /* background-color: #edb066; */
+    background-image: linear-gradient(to bottom right, orange , white);
 }
 
 /* Login/Signup Page */
@@ -19,6 +20,10 @@ body {
     text-align: center;
 }
 
+h2 {
+    margin: auto;
+}
+
 input {
     width: 80%;
     padding: 10px;
@@ -28,9 +33,9 @@ input {
 }
 
 button {
-    width: 80%;
+    width: 86%;
     padding: 10px;
-    background: #007BFF;
+    background: #edb066;
     color: white;
     border: none;
     border-radius: 4px;
@@ -38,21 +43,24 @@ button {
 }
 
 button:hover {
-    background: #0056b3;
+    background: #e79a3d;
 }
 
 .toggle {
     margin-top: 10px;
-    color: #007BFF;
+    color: #db8010;
     cursor: pointer;
 }
 
+.toggle:hover{
+    text-decoration: underline;
+}
+
 .profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     display: block;
-    margin: 0 auto 10px auto;
-    border: 3px solid #007BFF;
+    margin: auto;
+    margin-bottom: -20px;
 }

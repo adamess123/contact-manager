@@ -32,7 +32,12 @@ document.getElementById("search").addEventListener("keyup", function() {
 // Toggle the Add Contact form open and close
 document.querySelector(".addContact").addEventListener("click", function() {
     let form = document.querySelector(".add-contact-form");
-    form.style.display = form.style.display === "flex" ? "none" : "flex";
+    //form.style.display = form.style.display === "flex" ? "none" : "flex";
+    if (form.style.display === "none" || form.style.display === "") {
+        form.style.display = "flex";
+    } else {
+        form.style.display = "none";
+    }
 }); 
 
 // Function to add contact to the table
