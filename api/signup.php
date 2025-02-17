@@ -1,5 +1,4 @@
 <?php
-// Enable error reporting for debugging
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -11,33 +10,33 @@ include 'db.php';
 
 $inData = getRequestInfo();
 
-// Expecting JSON in the order: firstname, lastname, username, password
-if (!isset($inData["firstname"], $inData["lastname"], $inData["username"], $inData["password"])) {
+// Validate input
+if (empty($inData["firstname"]) || empty($inData["lastname"]) || empty($inData["username"]) || empty($inData["password"])) {
     sendResultInfoAsJson(["error" => "All fields are required"]);
     exit();
 }
 
-$firstname    = $inData["firstname"];
-$lastname     = $inData["lastname"];
-$username     = $inData["username"];
+$firstname = trim($inData["firstname"]);
+$lastname = trim($inData["lastname"]);
+$username = trim($inData["username"]);
 $passwordHash = password_hash($inData["password"], PASSWORD_DEFAULT);
 
-// Check if username already exists
-$stmt = $conn->prepare("SELECT ID FROM Users WHERE Username=?");
-if (!$stmt) {
-    sendResultInfoAsJson(["error" => "Database error: " . $conn->error]);
-    exit();
+// Function to check if the username exists
+function usernameExists($conn, $username) {
+    $stmt = $conn->prepare("SELECT ID FROM Users WHERE Username=?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+    $exists = $stmt->num_rows > 0;
+    $stmt->close();
+    return $exists;
 }
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
 
-if ($result && $result->num_rows > 0) {
-    $stmt->close();  // Close the SELECT statement before exiting
-    sendResultInfoAsJson(["error" => "Username already registered."]);
+// Check if username already exists
+if (usernameExists($conn, $username)) {
+    sendResultInfoAsJson(["error" => "Username already taken."]);
     exit();
 }
-$stmt->close();  // Close the SELECT statement after the check
 
 // Insert the new user
 $stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Username, Password) VALUES (?, ?, ?, ?)");
@@ -48,9 +47,10 @@ if (!$stmt) {
 $stmt->bind_param("ssss", $firstname, $lastname, $username, $passwordHash);
 
 if ($stmt->execute()) {
-    sendResultInfoAsJson(["message" => "User registered successfully!"]);
+    $userId = $stmt->insert_id;
+    returnWithInfo($firstname, $lastname, $userId);
 } else {
-    sendResultInfoAsJson(["error" => "Failed to register user: " . $stmt->error]);
+    sendResultInfoAsJson(["error" => "Failed to register user."]);
 }
 
 $stmt->close();
