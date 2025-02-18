@@ -2,17 +2,15 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-}
-
-/* Login/Signup Page */
-.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    /* background-color: #edb066; */
+    background-image: linear-gradient(to bottom right, orange , white);
 }
 
+/* Login/Signup Page */
 .container {
     background: white;
     padding: 20px;
@@ -20,6 +18,10 @@ body {
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     width: 400px;
     text-align: center;
+}
+
+h2 {
+    margin: auto;
 }
 
 input {
@@ -31,9 +33,9 @@ input {
 }
 
 button {
-    width: 80%;
+    width: 86%;
     padding: 10px;
-    background: #007BFF;
+    background: #edb066;
     color: white;
     border: none;
     border-radius: 4px;
@@ -41,11 +43,24 @@ button {
 }
 
 button:hover {
-    background: #0056b3;
+    background: #e79a3d;
 }
 
 .toggle {
     margin-top: 10px;
-    color: #007BFF;
+    color: #db8010;
     cursor: pointer;
+}
+
+.toggle:hover{
+    text-decoration: underline;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+    margin-bottom: -20px;
 }
