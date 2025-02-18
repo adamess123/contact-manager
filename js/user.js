@@ -25,4 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Please fill out all fields.");
         }
     });
+    
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+            // Add the logic to delete the account here (e.g., API call to backend)
+            alert("Account deleted.");
+            window.location.href = 'index.html'; // Redirect after deletion
+        }
+    }
 });
