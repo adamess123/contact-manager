@@ -17,6 +17,11 @@ document.addEventListener("click", function(event) {
     }
 });
 
+// Logout function
+document.querySelector(".logoutBtn").addEventListener("click", function() {
+    window.location.href = "first.html";
+});
+
 // Filter table based on search input
 document.getElementById("search").addEventListener("keyup", function() {
     let input = this.value.toLowerCase();
@@ -32,12 +37,7 @@ document.getElementById("search").addEventListener("keyup", function() {
 // Toggle the Add Contact form open and close
 document.querySelector(".addContact").addEventListener("click", function() {
     let form = document.querySelector(".add-contact-form");
-    //form.style.display = form.style.display === "flex" ? "none" : "flex";
-    if (form.style.display === "none" || form.style.display === "") {
-        form.style.display = "flex";
-    } else {
-        form.style.display = "none";
-    }
+    form.style.display = form.style.display === "flex" ? "none" : "flex";
 }); 
 
 // Function to add contact to the table
@@ -169,23 +169,3 @@ document.getElementById("search").addEventListener("input", filterTable);
 document.getElementById("fNameFilter").addEventListener("change", filterTable);
 document.getElementById("lNameFilter").addEventListener("change", filterTable);
 document.getElementById("emailFilter").addEventListener("change", filterTable);
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    document.querySelector('.dropbtn').addEventListener('click', function() {
-        document.querySelector('.dropdown-content').classList.toggle('show');
-    });
-});
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}

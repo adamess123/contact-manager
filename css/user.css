@@ -53,6 +53,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 /* Ensure input fields and labels align properly */
 .input-group {
     width: 80%;

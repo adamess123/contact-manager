@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Manager</title>
+    <link rel="stylesheet" href="second.css"> 
+    <!--trashCan Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- pencil Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<div class="header">
+    <h2>NAME's Contacts</h2>
+    <button class="logoutBtn">Logout</button>
+</div>
+
+<div class="optionsContainer">
+    <button class="addContact">Add Contact</button>
+    <div class="add-contact-form" style="display: none;">
+        <input type="text" id="firstName" placeholder="First Name">
+        <input type="text" id="lastName" placeholder="Last Name">
+        <input type="email" id="email" placeholder="Email">
+        <button id="saveContact">Save</button>
+    </div>
+
+    <div class="filter-container">
+        <button class="filter-button">Filter</button>
+        <div id="filter-content" class="filter-content">
+            <label><input type="checkbox" value="firstName" id="fNameFilter"> First Name</label>
+            <label><input type="checkbox" value="lastName" id="lNameFilter"> Last Name</label>
+            <label><input type="checkbox" value="email" id="emailFilter"> Email</label>
+        </div>
+    </div>
+
+    <input type="text" id="search" placeholder="Search">
+</div>
+
+<table id="contactTable">
+    <tr>
+        <th width="20%">First Name</th>
+        <th width="20%">Last Name</th>
+        <th>Email</th>
+        <th width="12%">Date Modified</th>
+        <th width="7%" colspan="2"></th>
+    </tr>
+</table>
+
+<script src="second.js"></script> <!-- Link to external JS -->
+</body>
+</html>

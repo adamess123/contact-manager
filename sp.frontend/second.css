@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h2{
+    margin: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.optionsContainer{
+    display: flex;
+    gap: 10px; /* Adds space between the elements */
+    align-items: center; /* Ensures they align properly */
+}
+
+/*these are all the buttons */
+.addContact{
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.addContact:hover,
+.addContact:focus {
+  background: #0056b3;
+  color: #ffffff;
+}
+
+.logoutBtn{
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.logoutBtn:hover,
+.logoutBtn:focus {
+  background: #0056b3;
+  color: #ffffff;
+}
+
+.filter-button{
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.filter-button:hover,
+.filter-button:focus {
+  background: #0056b3;
+  color: #ffffff;
+}
+/* --------------------- */
+#search {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.filter-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 120px;
+    overflow-y: auto;
+    max-height: 100px;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+.filter-content label {
+    display: block;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.filter-content label:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+.selected-items {
+    width:100px;
+    margin-top: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.selected-items div {
+    margin-bottom: 5px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd; /* delete later  using to see */
+    padding: 8px;
+    text-align: left;
+    overflow: auto ;
+}
+th {
+    background-color: #f4f4f4;
+}
+
+/*Add contact formatting */
+.add-contact-form {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.add-contact-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#saveContact {
+    padding: 8px 12px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#saveContact:hover {
+    background: #0056b3;
+}
+
