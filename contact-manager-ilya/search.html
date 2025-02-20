@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+	<!-- Browser Icon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Manager</title>
@@ -19,7 +27,6 @@
                 <div class="dropdown-content">
                     <a href="user.html" id="manageAccount">Manage Account</a>
                     <a href="index.html" id="logout">Logout</a>
-
                 </div>
             </div>
         </div>
@@ -42,9 +49,9 @@
         </div>
 
         <div class="add-contact-form" id="add-contact-form" style="display: none;">
-            <input type="text" id="firstName" placeholder="First Name">
-            <input type="text" id="lastName" placeholder="Last Name">
-            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="contactFirstName" placeholder="First Name">
+            <input type="text" id="contactLastName" placeholder="Last Name">
+            <input type="email" id="contactEmail" placeholder="Email">
             <button id="saveContact">Save</button>
         </div>
 
