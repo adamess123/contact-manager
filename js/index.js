@@ -185,3 +185,19 @@ function saveCookie() {
   document.cookie =
     "session=" + cookieValue + "; expires=" + date.toUTCString() + "; path=/";
 }
+
+// Read cookies
+function readCookie() {
+  let cookies = document.cookie.split("; ");
+  let sessionCookie = cookies.find((row) => row.startsWith("session="));
+  if (sessionCookie) {
+    let value = sessionCookie.split("=")[1];
+    value = decodeURIComponent(value);
+    let parts = value.split(",");
+    if (parts.length === 3) {
+      firstname = parts[0];
+      lastname = parts[1];
+      userId = parseInt(parts[2]);
+    }
+  }
+}
