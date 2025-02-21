@@ -24,6 +24,11 @@ document.getElementById("search").addEventListener("keyup", function () {
   let input = this.value.toLowerCase();
   let rows = document.querySelectorAll("table tr:not(:first-child)");
 
+<<<<<<< HEAD
+=======
+	searchContact();
+
+>>>>>>> ilya
   rows.forEach((row) => {
     let text = row.innerText.toLowerCase();
     row.style.display = text.includes(input) ? "" : "none";
@@ -205,12 +210,12 @@ function getUserData() {
 // Send contact to PHP
 function sendContactToPHP() {
   // Get user data from sessionStorage
-  const userData = getUserData();
-  if (!userData) {
-    console.error("User data not found");
-    window.location.href = "index.html";
-    return;
-  }
+  //const userData = getUserData();
+  //if (!userData) {
+  //  console.error("User data not found");
+  //  window.location.href = "index.html";
+  //  return;
+  //}
 
   // Collect contact details from html
   var firstName = document.getElementById("contactFirstName").value;
@@ -220,7 +225,11 @@ function sendContactToPHP() {
   // HARDCODE TO TEST BEFORE ADDING COOKIES. REMOVE AND CHECK BEFORE FINAL PRODUCT
   // HARDCODE TO TEST BEFORE ADDING COOKIES. REMOVE AND CHECK BEFORE FINAL PRODUCT
   // HARDCODE TO TEST BEFORE ADDING COOKIES. REMOVE AND CHECK BEFORE FINAL PRODUCT
+<<<<<<< HEAD
   userData.ID = 2;
+=======
+  var ownerID = 5;
+>>>>>>> ilya
   // HARDCODE TO TEST BEFORE ADDING COOKIES. REMOVE AND CHECK BEFORE FINAL PRODUCT
   // HARDCODE TO TEST BEFORE ADDING COOKIES. REMOVE AND CHECK BEFORE FINAL PRODUCT
   // HARDCODE TO TEST BEFORE ADDING COOKIES. REMOVE AND CHECK BEFORE FINAL PRODUCT
@@ -231,7 +240,7 @@ function sendContactToPHP() {
 
   // Create the JSON
   var data = {
-    userID: userData.ID,
+    ownerID: ownerID,
     firstName: firstName,
     lastName: lastName,
     email: email,
@@ -254,6 +263,66 @@ function sendContactToPHP() {
       }
     })
     .catch((error) => console.error("Fetch error:", error));
+<<<<<<< HEAD
+=======
+}
+
+// Logout
+function doLogout() {
+  sessionStorage.removeItem("userData");
+  window.location.href = "index.html";
+}
+
+// Attach event listener to the logout link to override default navigation
+document.getElementById("logout").addEventListener("click", function (e) {
+  e.preventDefault();
+  doLogout();
+});
+
+function searchContact() {
+
+	// Collect search value and filters
+	const search = document.getElementById("search").value;
+	const fn = document.getElementById("fNameFilter");
+	const ln = document.getElementById("lNameFilter");
+	const email = document.getElementById("emailFilter");
+
+	if(fn.checked) {
+		var ffn = 1;
+	} else { var ffn = 0; }
+	if(ln.checked) {
+		var fln = 1;
+	} else { var fln = 0; }
+	if(email.checked) {
+		var femail = 1;
+	} else { var femail = 0; }
+
+	// Create the JSON
+	var data = {
+		filterFirst : ffn,
+		filterLast : fln,
+		filterEmail : femail,
+		search : search
+	}
+
+	console.log(JSON.stringify(data));
+
+	// Send the JSON to PHP
+	fetch("api/displaycontacts.php", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(data),
+	})
+	.then((response) => response.json())
+	.then((result) => {
+		if (result.error) {
+			console.error("Error:", result.error);
+		} else {
+			console.log("Contacts quieried:", result);
+		}
+	})
+	.catch((error) => console.error("Fetch error:", error));
+>>>>>>> ilya
 }
 
 // Logout

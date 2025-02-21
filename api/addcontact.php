@@ -1,5 +1,9 @@
 <?php
 
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
@@ -13,7 +17,7 @@ $inData = getRequestInfo();
 //sendResultInfoAsJson(["error" => $inData]);
 //exit();
 
-if (!isset($inData["userID"], $inData["firstName"], $inData["lastName"], $inData["email"])) {
+if (!isset($inData["ownerID"], $inData["firstName"], $inData["lastName"], $inData["email"])) {
 	sendResultInfoAsJson(["error" => "All fields are required"]);
 	exit();
 }
@@ -22,18 +26,18 @@ if (!isset($inData["userID"], $inData["firstName"], $inData["lastName"], $inData
 $first = $inData["firstName"];
 $last = $inData["lastName"];
 $email = $inData["email"];
-$id = $inData["userID"];
+$ownerID = $inData["ownerID"];
 
 // Check for duplicate contacts?
 
 // Add contact
-$stmt = $conn->prepare("INSERT INTO Contacts (ID, FirstName, LastName, Email) VALUES (?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO Contacts (OwnerID, FirstName, LastName, Email) VALUES (?, ?, ?, ?)");
 if (!$stmt) {
     sendResultInfoAsJson(["error" => "Database error: " . $conn->error]);
     exit();
 }
 
-$stmt->bind_param("isss", $id, $first, $last, $email);
+$stmt->bind_param("isss", $ownerID, $first, $last, $email);
 
 if ($stmt->execute()) {
 	sendResultInfoAsJson(["message" => "Contact added successfully!"]);
