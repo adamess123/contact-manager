@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manage Account</title>
-    <link rel="stylesheet" href="css/user.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/user.css" />
+  </head>
+  <body>
+    <div class="account-container">
+      <div class="header">
+        <h2>Manage Account</h2>
+        <button onclick="window.location.href='search.html'">
+          Back to Contacts
+        </button>
+      </div>
 
-<div class="header">
-    <h2>Manage Account</h2>
-    <button onclick="window.location.href='search.html'">Back to Contacts</button>
-</div>
-
-<div class="account-container">
-    <h2>Edit Account Information</h2>
-    <div class="input-group">
+      <h2>Edit Account Information</h2>
+      <div class="input-group">
         <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Enter Username">
-    </div>
-    <div class="input-group">
+        <input type="text" id="username" placeholder="Enter Username" />
+      </div>
+      <div class="input-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Enter Email">
-    </div>
-    <div class="input-group">
+        <input type="email" id="email" placeholder="Enter Email" />
+      </div>
+      <div class="input-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter Password">
+        <input type="password" id="password" placeholder="Enter Password" />
+      </div>
+
+      <div>
+        <button
+          style="background-color: rgb(176, 83, 33)"
+          type="button"
+          class="btn btn-link"
+          onclick="confirmDelete()"
+        >
+          Delete Account
+        </button>
+      </div>
+
+      <div class="button-container">
+        <button onclick="window.location.href='search.html'">
+          Save Changes
+        </button>
+      </div>
     </div>
 
-    <div class="button-container">
-        <button onclick="window.location.href='search.html'">Save Changes</button>
-    </div>
-</div>
-
-<script src="js/user.js"></script>
-</body>
+    <script src="js/user.js"></script>
+  </body>
 </html>

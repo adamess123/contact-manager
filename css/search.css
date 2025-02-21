@@ -1,93 +1,94 @@
 /* general styling*/
-html, body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    height: 100%;
-    background: linear-gradient(to bottom right, orange , rgb(236, 224, 191));
-    overflow: hidden;
+html,
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  height: 100%;
+  background: linear-gradient(to bottom right, orange, rgb(236, 224, 191));
+  overflow: hidden;
 }
 
 .content-container {
-    background-color: white;
-    padding: 15px;
-    height: 90%;
-    border-radius: 15px;
-    margin: 20px;
+  background-color: white;
+  padding: 15px;
+  height: 90%;
+  border-radius: 15px;
+  margin: 20px;
 }
 
-h2{
-    margin: 0;
+h2 {
+  margin: 0;
 }
 
 /* header area - title and pfp*/
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 15px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
 }
 
 .profile-pic {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
 }
 
 /* dropdown from pfp - logout and manage account */
 .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .dropbtn {
-    background: none;
-    border: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: white;
-    min-width: 150px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 150px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 10px;
-    display: block;
-    text-decoration: none;
+  color: black;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 /*these are all the buttons - add, filter, search*/
-.optionsContainer{
-    display: flex;
-    gap: 10px; 
-    align-items: center; 
+.optionsContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
-.addContact{
-    padding: 10px;
-    background: #edb066;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.addContact {
+  padding: 10px;
+  background: #edb066;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .addContact:hover,
@@ -96,13 +97,13 @@ h2{
   color: #ffffff;
 }
 
-.filter-button{
-    padding: 10px;
-    background: #edb066;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.filter-button {
+  padding: 10px;
+  background: #edb066;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .filter-button:hover,
@@ -112,97 +113,98 @@ h2{
 }
 
 .filter-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 140px;
-    overflow-y: auto;
-    max-height: 100px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 140px;
+  overflow-y: auto;
+  max-height: 100px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 .filter-content label {
-    display: block;
-    padding: 5px 10px;
-    cursor: pointer;
+  display: block;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 .filter-content label:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 #search {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 12px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
 }
 
 .show {
-    display: block;
+  display: block;
 }
 
 .selected-items {
-    width:100px;
-    margin-top: 5px;
-    padding: 5px;
-    border: 1px solid #ccc;
+  width: 100px;
+  margin-top: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
 }
 
 .selected-items div {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 /*Add contact formatting */
 .add-contact-form {
-    display: none;
-    display: flex;
-    gap: 10px;
-    padding-top: 10px;
+  display: none;
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
 }
 
 .add-contact-form input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 #saveContact {
-    padding: 8px 12px;
-    background: #edb066;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 8px 12px;
+  background: #edb066;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 #saveContact:hover {
-    background: #e79a3d;
+  background: #e79a3d;
 }
 
 /* table styling*/
 table {
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    border-radius: 25px;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  border-radius: 25px;
 }
 
-.tableContainer{
-    width: 100%; /* Full width */
-    max-height: 450px; /* Limit height to prevent overflow */
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
+.tableContainer {
+  width: 100%; /* Full width */
+  max-height: 450px; /* Limit height to prevent overflow */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
 }
 
-th, td {
-    border-bottom: 1px solid #ddd; 
-    padding: 8px;
-    text-align: left;
-    overflow: auto ;
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  overflow: auto;
 }
 
 th {
-    background-color: #ecebe9;
+  background-color: #ecebe9;
 }

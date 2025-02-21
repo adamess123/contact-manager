@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-	<!-- Browser Icon -->
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
+    <!-- Browser Icon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,10 +31,20 @@
 
   <body>
     <div class="container" id="login-container">
+      <img
+        src="images/BusinessCat.png"
+        alt="Profile Picture"
+        class="profile-pic"
+      />
       <h2>Login</h2>
       <form id="login-form" onsubmit="doLogin(event)">
         <div class="formFields" id="loginFields">
-          <input type="text" id="username" placeholder="Username or email" required />
+          <input
+            type="text"
+            id="username"
+            placeholder="Username or email"
+            required
+          />
           <input
             type="password"
             id="password"
@@ -37,11 +60,17 @@
     </div>
 
     <div class="container" id="signup-container" style="display: none">
+      <img
+        src="images/BusinessCat.png"
+        alt="Profile Picture"
+        class="profile-pic"
+      />
       <h2>Sign Up</h2>
       <form id="signup-form" onsubmit="doSignup(event)">
         <div class="formFields" id="signupFields">
           <input type="text" id="firstName" placeholder="First Name" required />
           <input type="text" id="lastName" placeholder="Last Name" required />
+          <input type="email" id="email" placeholder="Email" required />
           <input type="text" id="newUsername" placeholder="Username" required />
           <input
             type="password"
@@ -49,6 +78,13 @@
             placeholder="Password"
             required
           />
+          <input
+            type="password"
+            id="newPassword"
+            placeholder="Re-type Password"
+            required
+          />
+
           <button type="submit">Sign Up</button>
         </div>
       </form>
