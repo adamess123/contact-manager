@@ -323,12 +323,7 @@ function searchContact() {
 
 // Logout
 function doLogout() {
+  document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
   sessionStorage.removeItem("userData");
   window.location.href = "index.html";
 }
-
-// Attach event listener to the logout link to override default navigation
-document.getElementById("logout").addEventListener("click", function (e) {
-  e.preventDefault();
-  doLogout();
-});

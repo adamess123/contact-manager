@@ -205,12 +205,3 @@ function readCookie() {
     window.location.href = "index.html";
   }
 }
-
-// Logout function (Clears session and redirects to login)
-function doLogout() {
-  userId = 0;
-  firstname = "";
-  lastname = "";
-  document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-  window.location.href = "index.html";
-}
