@@ -17,13 +17,13 @@ $username = trim($inData["username"]);
 $password = $inData["password"];
 
 // Fetch user details
-$stmt = $conn->prepare("SELECT ID, FirstName, LastName, Password FROM Users WHERE Username=?");
+$stmt = $conn->prepare("SELECT ID, FirstName, LastName, Password FROM Users WHERE Username = ? OR UserEmail = ?");
 if (!$stmt) {
     sendResultInfoAsJson(["error" => "Database error: " . $conn->error]);
     exit();
 }
 
-$stmt->bind_param("s", $username);
+$stmt->bind_param("ss", $username, $username);
 $stmt->execute();
 $result = $stmt->get_result();
 

@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manage Account</title>
-    <link rel="stylesheet" href="css/user.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/user.css" />
+  </head>
+  <body>
+    <div class="account-container">
+      <div class="header">
+        <h2>Manage Account</h2>
+        <button onclick="window.location.href='search.html'">
+          Back to Contacts
+        </button>
+      </div>
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter Username" />
+      </div>
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter Email" />
+      </div>
+      
+      <div class="button-row">
+        <button type="button" id="edit-password-btn" onclick="togglePasswordFields()">Edit Password</button>
+        <button class="delete-btn" onclick="confirmDelete()">Delete Account</button>
+      </div>
 
-    <div class="account-container"> 
-    
-        <div class="header">
-            <h2>Manage Account</h2>
-            <button onclick="window.location.href='search.html'">Back to Contacts</button>
-        </div>
-        
-        <h2>Edit Account Information</h2>
+      <div id="password-fields" style="display: none;">
         <div class="input-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" placeholder="Enter Username">
+          <label for="old-password">Enter old password:</label>
+          <input type="password" id="old-password" placeholder="Enter old password" />
         </div>
         <div class="input-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Enter Email">
+          <label for="new-password">Enter new password:</label>
+          <input type="password" id="new-password" placeholder="Enter new password" />
         </div>
         <div class="input-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" placeholder="Enter Password">
+          <label for="confirm-password">Re-type new password:</label>
+          <input type="password" id="confirm-password" placeholder="Re-type new password" />
         </div>
-    
-        <div><button style="background-color:rgb(176, 83, 33);" type="button" class="btn btn-link" onclick="confirmDelete()"> Delete Account</button></div>
-    
-        <div class="button-container">
-            <button onclick="window.location.href='search.html'">Save Changes</button>
-        </div>
-    </div>    
+      </div>
+      
+      <div class="button-container">
+        <button onclick="window.location.href='search.html'">
+          Save Changes
+        </button>
+      </div>
+    </div>
 
-<script src="js/user.js"></script>
-</body>
+    <script src="js/user.js"></script>
+  </body>
 </html>
